@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123b32">
+  <meta name="description" content="Memulai dengan hal yang kecil akan menimbulkan sesuatu yang besar di kemudian hari">
+  <title>Nur — Baca Al-Qur’an</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#beranda" aria-label="Nur, kembali ke beranda">
+      <span class="brand-mark" aria-hidden="true">ن</span>
+      <span class="brand-name">nur<span>.</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Navigasi utama">
+      <a href="#beranda">Beranda</a>
+      <a href="#baca">Baca Al-Qur’an</a>
+    </nav>
+    <a class="header-cta" href="#baca"><span aria-hidden="true">☾</span> Mulai membaca</a>
+  </header>
+
+  <main id="beranda">
+    <section class="hero">
+      <div class="hero-pattern" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow"><span class="eyebrow-line"></span> Temukan ketenangan dalam setiap ayat</p>
+        <h1>Sejenak bersama<br><span>cahaya Al-Qur’an.</span></h1>
+        <p class="hero-description">Baca firman-Nya dalam bahasa Arab, ikuti lantunan dalam transliterasi latin, dan pahami maknanya dalam bahasa Indonesia.</p>
+        <a class="hero-link" href="#baca">Jelajahi 114 surah <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-orbit orbit-one"></div>
+        <div class="art-orbit orbit-two"></div>
+        <div class="art-medallion"><span>۞</span></div>
+        <p class="art-caption">اقْرَأْ بِاسْمِ رَبِّكَ</p>
+        <span class="art-caption-small">Bacalah dengan nama Tuhanmu</span>
+      </div>
+      <div class="hero-foot">
+        <span><i></i> 114 surah</span>
+        <span><i></i> Arab · Latin · Indonesia</span>
+        <span class="hero-foot-note">Dibaca perlahan, direnungkan sepenuh hati</span>
+      </div>
+    </section>
+
+    <section class="reading-section" id="baca">
+      <div class="section-intro">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-line"></span> Mushaf digital</p>
+          <h2>Mulai dari <em>surah pilihanmu.</em></h2>
+        </div>
+        <p class="section-note">Pilih surah atau cari nama dan artinya untuk mulai membaca.</p>
+      </div>
+
+      <div class="reading-layout">
+        <aside class="surah-panel" aria-label="Daftar surah">
+          <div class="surah-panel-heading">
+            <div>
+              <p class="panel-kicker">AL-QUR’AN</p>
+              <h3>Daftar Surah</h3>
+            </div>
+            <span class="surah-total" id="surah-total">114</span>
+          </div>
+          <label class="search-field">
+            <span class="search-icon" aria-hidden="true"></span>
+            <span class="sr-only">Cari surah</span>
+            <input id="surah-search" type="search" placeholder="Cari surah..." autocomplete="off">
+            <kbd>/</kbd>
+          </label>
+          <p class="search-hint">Cari berdasarkan nama, arti, atau nomor surah</p>
+          <div class="surah-list" id="surah-list" aria-label="Surah Al-Qur’an"></div>
+          <p class="list-empty" id="list-empty" hidden>Surah tidak ditemukan. Coba kata kunci lain.</p>
+        </aside>
+
+        <section class="reader-panel" aria-label="Pembaca Al-Qur’an">
+          <div class="reader-topline">
+            <p class="panel-kicker">RUANG BACA</p>
+            <label class="surah-select-label">
+              <span class="sr-only">Pilih surah</span>
+              <select id="surah-select" aria-label="Pilih surah"></select>
+              <span class="select-chevron" aria-hidden="true">⌄</span>
+            </label>
+          </div>
+
+          <div class="surah-heading" id="surah-heading">
+            <div class="surah-heading-copy">
+              <p class="surah-number-label" id="surah-number-label">SURAH 001</p>
+              <h2 id="surah-title">Al-Fatihah</h2>
+              <p class="surah-meaning" id="surah-meaning">Pembukaan</p>
+            </div>
+            <div class="surah-arabic-name" id="surah-arabic-name" lang="ar" dir="rtl">الْفَاتِحَة</div>
+          </div>
+          <div class="surah-meta">
+            <span><span class="meta-dot"></span><span id="surah-origin">Mekah</span></span>
+            <span class="meta-divider"></span>
+            <span id="surah-verse-count">7 ayat</span>
+            <div class="text-size-controls" aria-label="Ukuran teks terjemahan">
+              <span>TEKS</span>
+              <button type="button" id="text-smaller" aria-label="Perkecil teks">A−</button>
+              <button type="button" id="text-larger" aria-label="Perbesar teks">A+</button>
+            </div>
+          </div>
+
+          <div class="reader-status" id="reader-status" role="status" aria-live="polite">Memuat daftar surah...</div>
+          <div class="reader-error" id="reader-error" role="alert" hidden>
+            <span class="error-icon" aria-hidden="true">!</span>
+            <div><strong>Ayat belum dapat dimuat.</strong><p id="reader-error-message">Periksa koneksi internet, lalu coba lagi.</p></div>
+            <button type="button" id="retry-button">Coba lagi</button>
+          </div>
+          <div class="verses" id="verses" aria-live="polite"></div>
+          <div class="reader-pagination">
+            <button class="surah-nav-button" id="previous-surah" type="button" aria-label="Surah sebelumnya">
+              <span aria-hidden="true">←</span><span>Sebelumnya</span>
+            </button>
+            <span class="pagination-label" id="pagination-label">1 / 114</span>
+            <button class="surah-nav-button next-button" id="next-surah" type="button" aria-label="Surah berikutnya">
+              <span>Selanjutnya</span><span aria-hidden="true">→</span>
+            </button>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <a class="brand footer-brand" href="#beranda"><span class="brand-mark" aria-hidden="true">ن</span><span class="brand-name">nur<span>.</span></span></a>
+    <p>Semoga setiap ayat membawa kebaikan.</p>
+    <span class="source-note">Data ayat: equran.id</span>
+  </footer>
+</body>
+</html>
